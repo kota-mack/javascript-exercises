@@ -1,14 +1,13 @@
 const fibonacci = function(input) {
     //if negative return "OOPS"
-    let n = 1;
-    if (input < 1) {
+    let n = input;
+    if (n < 1) {
         return "OOPS";
     } else {
-        //use for loop to iterate fibonacci sequence up to and including specified number
-        for (i = 0; i < input; i++) {
-            n = (n - 1) + (n - 2);
-        }
-        //return nth number
+        let Phi = ((1 + (Math.sqrt(5)))/2);
+        let phi = ((1 - (Math.sqrt(5)))/2);
+        n = (((Phi**n) - (phi)**n)/(Math.sqrt(5)));
+        n = Math.round(n);
         return n;
     }
 };
