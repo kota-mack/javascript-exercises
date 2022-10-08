@@ -12,15 +12,30 @@ const caesar = function(input, number) {
             }
         }
         if (toCode[i] == input[i]) {
+            toCode[i] = input.charCodeAt(i);
             continue;
         } else {
-            toCode[i] = (input.charCodeAt(i) + shiftFactor);
+            if (input.charCodeAt(i) < 91) {
+                if ((input.charCodeAt(i) + shiftFactor) > 90) {
+                    toCode[i] = (input.charCodeAt(i) + shiftFactor - 26);
+                } else {
+                    toCode[i] = (input.charCodeAt(i) + shiftFactor);
+                }
+            } else {
+                if ((input.charCodeAt(i) + shiftFactor) > 122) {
+                    toCode[i] = (input.charCodeAt(i) + shiftFactor- 26);
+                } else {
+                    toCode[i] = (input.charCodeAt(i) + shiftFactor);
+                }
+            }
         }
     }
-    return toCode;
+    let codedChars = [];
+    for (i = 0; i < toCode.length; i++) {
+        codedChars[i] = String.fromCharCode(toCode[i]);
+    }
+    return codedChars.join("");
 };
-
-console.log(caesar("a,b! c", 4));
 
 // Do not edit below this line
 module.exports = caesar;
