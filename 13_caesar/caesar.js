@@ -2,6 +2,16 @@ const caesar = function(input, number) {
     const punctuationString = ' !"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~';
     const punctuationArray = Array.from(punctuationString);
     let toCode = [];
+    if (number < 0) {
+        number = number + 26;
+    } else {
+        number = number
+    }
+    if (number > 26) {
+        number = (number % 26);
+    } else {
+        number = number;
+    }
     const shiftFactor = Number(number);
     for (i = 0; i < input.length; i++) {
         for (p = 0; p < punctuationArray.length; p++) {
